@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramen</title>
+</head>
+<style>
+ *{
+margin: 0;
+ }   
+#lewy{
+float: left;
+width: 50%;
+height: 800px;
+background-color: darkgrey;
+}
+#prawy{
+    float: right;
+    text-align: center;
+    width: 50%;
+    height: 800px;
+    background-color: cadetblue;
+}
+#footer{
+background-color: cornflowerblue;
+}
+</style>
+<script>
+
+function obliczCene(){
+let wyjscie= document.getElementById("h");    
+let z1 = document.getElementById("zu1")
+let z2 = document.getElementById("zu2")
+let z3 = document.getElementById("zu3")
+let d1= document.getElementById("da1")
+let d2= document.getElementById("da2")
+let d3= document.getElementById("da3")
+let d4= document.getElementById("da4")
+let d5 = document.getElementById("da5")
+let p1 = document.getElementById("prz1")
+let p2 = document.getElementById("prz2")
+let p3 = document.getElementById("prz3")
+let p4 = document.getElementById("prz4")
+let p5 = document.getElementById("prz5")
+let n1= document.getElementById("np1")
+let n2= document.getElementById("np2")
+let n3= document.getElementById("np3")
+let suma=0
+if(z1.checked){
+    suma+= parseInt(z1.value)
+}
+if(z2.checked){
+    suma+= parseInt(z2.value)
+}
+if(z3.checked){
+    suma+= parseInt(z3.value)
+}
+if(d1.checked){
+    suma += parseInt(d1.value) 
+}
+if(d2.checked){
+    suma += parseInt(d2.value) 
+}
+if(d3.checked){
+    suma += parseInt(d3.value) 
+}
+if(d4.checked){
+    suma += parseInt(d4.value) 
+}
+if(p1.checked){
+    suma += parseInt(p1.value) 
+}
+if(p2.checked){
+    suma += parseInt(p2.value) 
+}
+if(p3.checked){
+    suma += parseInt(p3.value) 
+}
+if(p4.checked){
+    suma += parseInt(p4.value) 
+}
+if(p5.checked){
+    suma += parseInt(p5.value) 
+}
+if(n1.checked){
+    suma += parseInt(n1.value) 
+}
+if(n2.checked){
+    suma += parseInt(n2.value) 
+}
+if(n3.checked){
+    suma += parseInt(n3.value) 
+}
+
+
+
+
+wyjscie.innerHTML = suma;
+
+
+
+
+
+
+
+}
+</script>
+<body>
+<!-- <div id="h"> _______</div> -->
+
+<div id="maglowek"><h1>Restauracja Rodzinna</h1></div>
+<div id="footer">Opracował: ML</div>
+<div id="prawy">
+<img src="obrazek.png" id="obraz" alt="obrazek ramenu"><br>
+Wartość zamówienia:
+<div id="h"> _______</div>
+</div>
+<div id="lewy">
+<form onchange="obliczCene()" id="Kontener">
+
+ <h2>Zupy</h2>
+Gazpacho (20zl) <input type="checkbox" value=20 id="zu1"><br>
+Krem z warzyw (25zl) <input type="checkbox" value=25 id="zu2"><br>
+Gulaszowa ostra (30zl) <input type="checkbox" value=30 id="zu3"><br>
+
+<h2>Danie główne</h2>
+Kaczka i owoc (30zl) <input type="checkbox" value=30 id="da1"><br>
+Kurczak pieczony(40zl) <input type="checkbox" value=40 id="da2"><br>
+Wieprzowy przysmak(35zl) <input type="checkbox" value=35 id="da3"><br>
+Mintaj w panierce(30zł) <input type="checkbox" value=30 id="da4"><br>
+Alle kotlet (30zł) <input type="checkbox" value=30 id="da5"><br>
+
+><h2>Przystawki:</h2>
+Owoce morza(20zl) <input type="checkbox" value=20 id="prz1"><br>
+Grzybki, warzywa, sosy (15zl) <input type="checkbox" value=15 id="prz2"><br>
+Orzechy i chipsy(10 zl) <input type="checkbox" value=10 id="prz3"><br>
+Tatar i jajko (15zl) <input type="checkbox" value=15 id="prz4"><br>
+Bukiet warzxyw (10zl) <input type="checkbox" value=10 id="prz5"><br>
+
+<h2>Napoje:</h2>
+Sok porzeczkowy(3zl) <input type="checkbox" value=10 id="np1"><br>
+Sok porzeczkowy(3zl) <input type="checkbox" value=10 id="np2"><br>
+Sok porzeczkowy(2zl) <input type="checkbox" value=10 id="np3"><br>
+</form>
+</div>
+</body>
+</html>
