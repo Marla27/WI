@@ -15,6 +15,9 @@ width: 50%;
 height: 800px;
 background-color: darkgrey;
 }
+  #lewy h2, p{
+            margin: 15px;
+  }
 #prawy{
     float: right;
     text-align: center;
@@ -25,13 +28,15 @@ background-color: darkgrey;
 #footer{
 background-color: cornflowerblue;
 clear: both;
-font-size: 70PX;
+font-size: 40PX;
 color:  white;
-height: 107px;
+height: 70px;
 }
 #naglowek{
 background-color: cornflowerblue;
 color:  white;
+text-align: center;
+font-size: 30px;
 }
 
 </style>
@@ -46,7 +51,7 @@ let d1= document.getElementById("da1")
 let d2= document.getElementById("da2")
 let d3= document.getElementById("da3")
 let d4= document.getElementById("da4")
-let d5 = document.getElementById("da5")
+let d5= document.getElementById("da5")
 let p1 = document.getElementById("prz1")
 let p2 = document.getElementById("prz2")
 let p3 = document.getElementById("prz3")
@@ -77,6 +82,9 @@ if(d3.checked){
 if(d4.checked){
     suma += parseInt(d4.value) 
 }
+if(d5.checked){
+    suma += parseInt(d5.value) 
+}
 if(p1.checked){
     suma += parseInt(p1.value) 
 }
@@ -105,7 +113,7 @@ if(n3.checked){
 
 
 
-wyjscie.innerHTML = suma;
+wyjscie.innerHTML = suma + "zł"
 
 
 
@@ -116,42 +124,41 @@ wyjscie.innerHTML = suma;
 }
 </script>
 <body>
-<!-- <div id="h"> _______</div> -->
 
 <div id="naglowek"><h1>Restauracja Rodzinna</h1></div>
 <div id="prawy">
 <img src="obrazek.png" id="obraz" alt="obrazek ramenu"><br>
 Wartość zamówienia:
-<div id="h"> _______</div>
+<div id="h"> _______</div> 
 </div>
-<div id="lewy">
+<section id="lewy">
 <form onchange="obliczCene()" id="Kontener">
 
  <h2>Zupy</h2>
-Gazpacho (20zl) <input type="checkbox" value=20 id="zu1"><br>
-Krem z warzyw (25zl) <input type="checkbox" value=25 id="zu2"><br>
-Gulaszowa ostra (30zl) <input type="checkbox" value=30 id="zu3"><br>
+<p>Gazpacho (20zl) <input type="checkbox" value=20 id="zu1"><br></p>
+<p>Krem z warzyw (25zl) <input type="checkbox" value=25 id="zu2"><br></p>
+<p>Gulaszowa ostra (30zl) <input type="checkbox" value=30 id="zu3"><br></p>
 
 <h2>Danie główne</h2>
-Kaczka i owoc (30zl) <input type="checkbox" value=30 id="da1"><br>
-Kurczak pieczony(40zl) <input type="checkbox" value=40 id="da2"><br>
-Wieprzowy przysmak(35zl) <input type="checkbox" value=35 id="da3"><br>
-Mintaj w panierce(30zł) <input type="checkbox" value=30 id="da4"><br>
-Alle kotlet (30zł) <input type="checkbox" value=30 id="da5"><br>
+<p>Kaczka i owoc (30zl) <input type="checkbox" value=30 id="da1"><br></p>
+<p>Kurczak pieczony(40zl) <input type="checkbox" value=40 id="da2"><br></p>
+<p>Wieprzowy przysmak(35zl) <input type="checkbox" value=35 id="da3"><br></p>
+<p>Mintaj w panierce(30zł) <input type="checkbox" value=30 id="da4"><br></p>
+<p>Alle kotlet (30zł) <input type="checkbox" value=30 id="da5"><br></p>
 
-><h2>Przystawki:</h2>
-Owoce morza(20zl) <input type="checkbox" value=20 id="prz1"><br>
-Grzybki, warzywa, sosy (15zl) <input type="checkbox" value=15 id="prz2"><br>
-Orzechy i chipsy(10 zl) <input type="checkbox" value=10 id="prz3"><br>
-Tatar i jajko (15zl) <input type="checkbox" value=15 id="prz4"><br>
-Bukiet warzxyw (10zl) <input type="checkbox" value=10 id="prz5"><br>
+<h2>Przystawki:</h2>
+<p>Owoce morza(20zl) <input type="checkbox" value=20 id="prz1"><br></p>
+<p>Grzybki, warzywa, sosy (15zl) <input type="checkbox" value=15 id="prz2"><br></p>
+<p>Orzechy i chipsy(10 zl) <input type="checkbox" value=10 id="prz3"><br></p>
+<p>Tatar i jajko (15zl) <input type="checkbox" value=15 id="prz4"><br></p>
+<p>Bukiet warzxyw (10zl) <input type="checkbox" value=10 id="prz5"><br></p>
 
 <h2>Napoje:</h2>
-Sok porzeczkowy(3zl) <input type="checkbox" value=10 id="np1"><br>
-Sok porzeczkowy(3zl) <input type="checkbox" value=10 id="np2"><br>
-Sok porzeczkowy(2zl) <input type="checkbox" value=10 id="np3"><br>
+<p>Sok porzeczkowy(3zl) <input type="checkbox" value=3 id="np1"><br></p>
+<p>Sok porzeczkowy(3zl) <input type="checkbox" value=3 id="np2"><br></p>
+<p>Sok porzeczkowy(2zl) <input type="checkbox" value=2 id="np3"><br></p>
 </form>
-</div>
+</section>
 <footer id="footer">Opracował: ML</footer>
 </body>
 </html>
