@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="hasło">Hasło</label>
+        <input type="password" name="hasło" id="hasło" placeholder="Wpisz hasło" minlength="1" maxlength="9999" pattern="^ABC$">
+        <input type="submit" value="G">
+        <input type="button" value="wawawa" onclick="sprawdź()">
+    </form>
+    <script>
+        function sprawdź() {
+            let we = document.getElementById("hasło").value
+            const regex = /^[0-9]{3}-[0-9]{2}$/
+            if(regex.test(we)){
+                alert("sigma")
+            } else {
+                alert("nie sigma")
+            }
+        }
+    </script>
+</body>
+</html>
