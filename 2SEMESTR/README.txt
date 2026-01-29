@@ -16,6 +16,11 @@
     <button id="losuj">Następna runda</button>
     <br>
     <img id="komputer">
+    <div id="wynykiwszystkie">
+        <span id="wyng">Wynik gracz:0</span> 
+        <span id="wynk">Wynik komputer:0</span> 
+        <span id="ogloszenie"></span>
+    </div>
    <!-- /// //-------------------------------------------------------------- -->
  <script>
         var obrazki = document.getElementsByTagName("img");
@@ -25,6 +30,9 @@
         var los 
         var wyn=0
         var wynk=0
+        let wyng = document.getElementById("wyng")
+        let wynikK = document.getElementById("wynk")
+        let ogloszenie=document.getElementById("ogloszenie")
 
         // Gracz 
             for(let i=0; i<obrazki.length; i++){
@@ -79,15 +87,25 @@
                 }
              console.log(wyn)
              console.log(wynk)
+               wyng.innerHTML=wyn
+            wynikK.innerHTML = wynk
              if(wyn==10){
                 console.log("wygrał uzytkownik ")
+                wyn=0;
+                wynk=0;
+                alert("wygrał uzytkownik ")
              }
              if(wynk==10){
                 console.log("wygrał komputer")
+                wyn=0;
+                wynk=0;
+               alert("wygrał komputer")
              }
+            
             }
              console.log(wbr+" "+ los)
-             
+            wyng.innerHTML=wyn
+            wynikK.innerHTML = wynk 
 
              
   </script>
