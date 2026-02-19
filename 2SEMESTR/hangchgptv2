@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasło</title>
+    <style>
+        #lewy {
+            height: 600px;
+            width: 33%;
+            border: 5px solid blue;
+            float: left;
+        }
+        #prawyu {
+            height: 300px;
+            width: 66%;
+            outline: 5px solid blue;
+            position: absolute;
+            top: 13px;
+            left: 34%;
+        }
+        #prawyd {
+            height: 300px;
+            width: 66%;
+            outline: 5px solid blue;
+            position: absolute;
+            top: 313px;
+            left: 34%;
+        }
+        input[type="button"] {
+            margin: 5px;
+            font-size: 20px;
+        }
+        .haslo {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="lewy"></div>
+    <div id="prawyu"></div>
+    <div id="prawyd"></div>
+    <script>
+        // Litery klawiatury
+        let litery = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','V','W','X','Y','Z'];
+        
+        let prawyd = document.getElementById("prawyd");
+        let prawyu = document.getElementById("prawyu");
+
+        // Funkcja do generowania przycisków liter
+        function klawiatura() {
+            for (let i = 0; i < litery.length; i++) {
+                prawyd.innerHTML += `<input type="button" value="${litery[i]}" onclick="wpiszLiterę('${litery[i]}')">`;
+            }
+        }
+
+        // Hasło
+        let H = "MASLO";
+
+        // Funkcja do generowania pustych pól na hasło
+        function haslo() {
+            for (let i = 0; i < H.length; i++) {
+                prawyu.innerHTML += `<input type="button" class="haslo" id="p${i}" disabled>`;
+            }
+        }
+
+        // Funkcja do wstawiania liter do przycisków hasła
+        function wpiszLiterę(litera) {
+            for (let i = 0; i < H.length; i++) {
+                let przyciskHasła = document.getElementById(`p${i}`);
+                if (przyciskHasła.disabled && litera === H[i]) {
+                    przyciskHasła.value = litera;
+                    przyciskHasła.disabled = false;
+                    break;
+                }
+            }
+        }
+
+        // Wywołanie funkcji generujących elementy
+        klawiatura();
+        haslo();
+    </script>
+</body>
+</html>
