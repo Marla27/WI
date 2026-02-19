@@ -13,15 +13,18 @@
         #prawyu{
             height: 300px;
             width: 66%;
-            outline: 5px solid green;
+            outline: 5px solid blue;
             position: absolute;
-            top: 0px;
-            left: 33%;
+            top: 13px;
+            left: 34%;
         }
         #prawyd{
             height: 300px;
             width: 66%;
             outline: 5px solid blue;
+            position: absolute;
+            top: 313px;
+            left: 34%;
         }
     </style>
 </head>
@@ -29,5 +32,14 @@
     <div id="lewy">6</div>
     <div id="prawyu">7</div>
     <div id="prawyd">8</div>
+    <script>
+        let litery = ['A','B','C']
+        let prawyd = document.getElementById("prawyd") 
+        function klawiatura(){
+            for(i=0;i<litery.length;i++){
+               prawyd.innerHTML += "<input type = button value ="+litery[i]+">"
+            }
+        }
+    </script>
 </body>
 </html>
