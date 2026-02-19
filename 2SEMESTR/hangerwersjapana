@@ -46,13 +46,15 @@
     }
         function przycisk(l){
           
-            
+            let obrazek = document.getElementById("zdj")
             console.log(l)
             for(i=0;i<h.length;i++){
                 
                 if(h.charAt(i)==l){
                     let p = document.getElementById("p"+i)
                     p.value = l
+                } else{
+                    obrazek.src = ""
                 }
             }
         }
