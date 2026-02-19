@@ -29,17 +29,33 @@
     </style>
 </head>
 <body>
-    <div id="lewy">6</div>
-    <div id="prawyu">7</div>
-    <div id="prawyd">8</div>
+    <div id="lewy"></div>
+    <div id="prawyu"></div>
+    <div id="prawyd"></div>
     <script>
-        let litery = ['A','B','C']
+        let litery = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','V','W','X','Y','Z']
         let prawyd = document.getElementById("prawyd") 
+        let prawyu = document.getElementById("prawyu")
+
         function klawiatura(){
             for(i=0;i<litery.length;i++){
-               prawyd.innerHTML += "<input type = button value ="+litery[i]+">"
+               prawyd.innerHTML += "<input type = button value ="+litery[i]+" onclick=wprowadzenie("+i+")>"
             }
         }
+        let H= "maslo"
+       function haslo(){
+           for(i=0; i<H.length; i++){
+           prawyu.innerHTML += "<input type=button id=p"+i+">";
+        }
+    }
+        function wprowadzenie(parametr){
+            console.log(litery[parametr])
+            if(H=litery[parametr]){}
+            //wyp isz litery parametr w danym polu
+
+        }
+        klawiatura()
+        haslo()
     </script>
 </body>
 </html>
