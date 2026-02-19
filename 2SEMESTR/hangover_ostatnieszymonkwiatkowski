@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #lewy{
+        border: 2px solid blue;
+        width:33%;
+        height:1000px;
+        position:absolute;
+        top:0px;
+        left:0px;
+      }
+      #prawyup{
+        border: 2px solid blue;
+        width:66%;
+        height:1000px;
+        position:absolute;
+        top:0px;
+        left:33%;
+      }
+      #prawydw{
+        border: 2px solid blue;
+        width:66%;
+        height:1000px;
+        position:absolute;
+        top:50%;
+        left:33%;
+      }
+      img{
+        width:100%;
+       
+      }
+
+    </style>
+    <script>
+       function klawiatura()
+       {
+         literki = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','W','X','Y','Z'];
+         
+        for(i=0; i<literki.length; i++){
+           prawydw.innerHTML += "<input type=button value="+literki[i]+
+           " onclick=dzialaj('"+literki[i]+"')>";
+            
+        }
+       }
+        h = "ALICJA";  
+        function haslo(){
+           for(i=0; i<h.length; i++){
+           prawyup.innerHTML += "<input type=button id=p"+i+">";
+        } 
+
+
+       }
+       let l=0;
+       function dzialaj(z){
+        temp=false;
+        for(i=0; i<h.length; i++){
+            if(h.charAt(i)==z){
+                document.getElementById("p"+i).value=h[i];
+                temp =true;
+            }
+        }
+        if (temp==false)
+        lewy.innerHTML="<img src="+l+".jpg>";
+        l++;
+
+        
+       }
+      
+      
+
+    </script>
+</head>
+<body onload='klawiatura();haslo();'>
+   <div id=lewy> </div> 
+   <div id=prawyup> </div> 
+   <div id=prawydw> </div> 
+</body>
+</html>
