@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #lewy{
+            height: 600px;
+            width: 33%;
+            border: 5px solid blue;
+        }
+        #prawyu{
+            height: 300px;
+            width: 66%;
+            outline: 5px solid blue;
+            position: absolute;
+            top: 13px;
+            left: 34%;
+        }
+        #prawyd{
+            height: 300px;
+            width: 66%;
+            outline: 5px solid blue;
+            position: absolute;
+            top: 313px;
+            left: 34%;
+        }
+    </style>
+</head>
+<body onload="klawiatura();haslo()">
+    <div id="lewy">
+        <img src="" id="zdj">
+    </div>
+    <div id="prawyu"></div>
+    <div id="prawyd"></div>
+    <script>
+        let litery = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+        let prawyd = document.getElementById("prawyd") 
+        let prawyu = document.getElementById("prawyu") 
+        let h = "ISRAEL" 
+        function haslo(){
+           for(i=0; i<h.length; i++){
+           prawyu.innerHTML += "<input type=button id=p"+i+">";
+        } 
+    }
+        function przycisk(l){
+          
+            
+            console.log(l)
+            for(i=0;i<h.length;i++){
+                
+                if(h.charAt(i)==l){
+                    let p = document.getElementById("p"+i)
+                    p.value = l
+                }
+            }
+        }
+        function klawiatura(){
+            for(i=0;i<litery.length;i++){
+               prawyd.innerHTML += "<input type = button value ="+litery[i]+" onclick=przycisk('"+litery[i]+"')>"
+            }
+        }
+       
+    
+    </script>
+</body>
+</html>
