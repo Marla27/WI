@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="inp">
+<input type="button" id="przy" value="Podaj">
+<input type="radio"  name="r1" id="rad1" onclick="f1()">
+<input type="radio"  name="r1" id="rad2" onclick="f2()"> 
+<span id="spn"></span>
+<script>
+    // Wydawanie z kasy
+
+
+
+function f1(){
+    let t =[1000,900,500,400,100,90,50,40,10,9,5,4,1];
+    let tr = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']
+    let x = document.getElementById("inp").value
+    let sp =document.getElementById("spn")
+    sp.innerHTML =" " ;
+    while(x>0){
+    for(let i=0; i<t.length; i++){
+        if(x>=t[i]){
+            x-=t[i] 
+         sp.innerHTML += tr[i]+ " ";  
+         i=0
+     
+        }
+     }
+}
+}
+function f2(){
+let t =[1000,900,500,400,100,90,50,40,10,9,5,4,1];
+let tr = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']
+let x =  document.getElementById("inp").value
+let X = x.toUpperCase()
+let sp= document.getElementById("spn")
+sp.innerHTML=" "
+let wyn = 0;
+for(i=0;i<X.length;i++){
+  let przem = tr.indexOf(X.charAt(i))
+  let przem2 =tr.indexOf(X.charAt(i+1))
+ if(przem>przem2&&przem2>-1){
+   wyn-= t[przem]
+ }
+ else{
+     wyn += t[przem]
+ }
+ sp.innerHTML = wyn
+ console.log(wyn)
+    }
+
+}
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+// let x = 58;
+// let r= "";
+// for(let i =0; i<t.length; i++){
+// if(x >= t[i]){
+// r+= t[i]+ "zł"+ " ";
+// x-=t[i];
+// }
+// } -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <style>
+    #inp{
+        position: absolute;
+        left: 45%;
+        top: 20%;
+    }
+    #rad1{
+        position: absolute;
+        left: 45%;
+        top: 25%;
+    }
+    #rad2{
+        position: absolute;
+        left: 45%;
+        top: 30%;
+    }
+    #przy{
+        position: absolute;
+        left: 55%;
+        top: 20%;
+    }
+</style>
+
