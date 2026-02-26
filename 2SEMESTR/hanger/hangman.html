@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisielec</title>
+    <style>
+      #lewy{
+        border: 2px solid blue;
+        width:33%;
+        height:1000px;
+        position:absolute;
+        top:0px;
+        left:0px;
+      }
+      #prawyup{
+        border: 2px solid blue;
+        width:66%;
+        height:1000px;
+        position:absolute;
+        top:0px;
+        left:33%;
+      }
+      #prawydw{
+        border: 2px solid blue;
+        width:66%;
+        height:1000px;
+        position:absolute;
+        top:50%;
+        left:33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;=
+        gap: 10px;
+      }
+      
+      img{
+        width:100%;
+       
+      }
+      #prawyup>input{
+        width: 50px;
+        height: 50px;
+        color: black;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: large;
+        background-color: red; 
+        margin: 10px;
+      }
+
+      .rzad {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 5px; 
+    }
+      .rzad>input{
+        padding: 15px;
+        margin: 5px;
+        color: black;
+        width: 50px;
+        height: 50px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: large;
+        background-color: lightblue; 
+      }
+
+
+
+    </style>
+    <script>
+         let literki1 = ["Q","W","E","R","T","Y","U","I","O","P"];
+         let literki2 = ["A","S","D","F","G","H","J","K","L"];
+         let literki3 = ["Z","X","C","V","B","N","M"]
+         let h = prompt("PODAJ HASŁO");
+         h = h.toUpperCase();
+         h = h.replace(/Ą/g,"A")
+              .replace(/Ć/g,"C")
+              .replace(/Ę/g,"E")
+              .replace(/Ł/g,"L")
+              .replace(/Ń/g,"N")
+              .replace(/Ó/g,"O")
+              .replace(/Ś/g,"S")
+              .replace(/Ź/g,"Z")
+              .replace(/Ż/g,"Z");
+         let bledy = 0;
+         if (!h){
+          alert("NIE PODANO HASŁA!")
+          location.reload();
+         }
+
+       function klawiatura(){
+       let rzad1 = document.getElementById("rzad1");
+       let rzad2 = document.getElementById("rzad2");
+       let rzad3 = document.getElementById("rzad3");
+       
+        for(let i=0; i<literki1.length; i++){
+           rzad1.innerHTML += "<input type=button value="+literki1[i]+
+           " onclick=dzialaj('"+literki1[i]+"')>";
+        }
+
+        for(let i=0; i<literki2.length; i++){
+           rzad2.innerHTML += "<input type=button value="+literki2[i]+
+           " onclick=dzialaj('"+literki2[i]+"')>";
+        }
+
+        for(let i=0; i<literki3.length; i++){
+           rzad3.innerHTML += "<input type=button value="+literki3[i]+
+           " onclick=dzialaj('"+literki3[i]+"')>";
+        }
+       }
+
+        function haslo(){
+           for(let i=0; i<h.length; i++){ 
+           prawyup.innerHTML += "<input type=button id=p"+i+" disabled>";
+        } 
+        lewy.innerHTML = "<img src='0.jpg' width='200'>";
+       }
+
+       function dzialaj(litera){
+            let trafiona = false;
+
+            for(let i = 0; i < h.length; i++) {
+            if(h[i] == litera) {
+                let element = document.getElementById("p" + i);
+                element.value = litera;
+                element.style.backgroundColor = "lime";
+                trafiona = true;
+            }
+        }
+
+            if(!trafiona){
+                bledy++;
+                if(bledy <= 9){
+                    lewy.innerHTML = "<img src='"+bledy+".jpg' width='200'>";
+                }
+                if(bledy == 9){
+                    alert("Przegrałeś!");
+                }
+            }
+
+            let wygrana = true;
+            for(let i=0; i<h.length; i++){
+                if(document.getElementById("p"+i).value == ""){
+                    wygrana = false;
+                }
+            }
+
+            if (wygrana){
+               alert("WYGRAŁEŚ!")
+            }
+         }
+    </script>
+</head>
+<body onload='klawiatura();haslo();'>
+   <div id=lewy></div> 
+   <div id=prawyup>
+
+
+   </div> 
+   <div id=prawydw>
+    <div class="rzad" id="rzad1"></div>
+    <div class="rzad" id="rzad2"></div>
+    <div class="rzad" id="rzad3"></div></div> 
+</body>
+</html>
