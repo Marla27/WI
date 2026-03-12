@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symulacja - Dwie Tablice</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body {
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 40px;
+        }
+        .tablica {
+            border: 2px solid #333;
+            padding: 15px;
+            background: #f5f5f5;
+        }
+        .tytul {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .komorka {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+        .zywa {
+            background: #4CAF50;
+            color: white;
+        }
+        .martwa {
+            background: #ddd;
+            color: #333;
+        }
+        .legend {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="kontener" class="container"></div>
+    
+    <div class="legend">
+        <strong>Legenda:</strong> ■ = żywa komórka | Liczba = ilość żywych sąsiadów
+    </div>
+
+<script>
+let n = 10;
+
+// Tablica 1: Stan komórek (0 - martwa, 1 - żywa)
+let h = new Array(n);
+for(let i=0; i<n; i++){
+    h[i] = new Array(n);
+    for(let j=0; j<n; j++){
+        h[i][j] = 0;
+    }
+}
+
+// Ustawienie początkowych żywych komórek
+h[3][3] = 1;
+h[4][4] = 1;
+h[5][2] = 1;
+h[5][3] = 1;
+h[5][4] = 1;
+
+// Tablica 2: Liczba sąsiadów dla każdej komórki
+let sasiadi = new Array(n);
+for(let i=0; i<n; i++){
+    sasiadi[i] = new Array(n);
+}
+
+// Funkcja obliczająca sąsiadów
+function obliczSasiadow() {
+    // Wyczyść tablicę
+    for(let i=0; i<n; i++){
+        for(let j=0; j<n; j++){
+            sasiadi[i][j] = 0;
+        }
+    }
+
+    // Dla każdej żywej komórki zwiększ licznik u sąsiadów
+    for(let i=0; i<n; i++){
+        for(let j=0; j<n; j++){
+            if(h[i][j] === 1) {
+                for(let di = -1; di <= 1; di++) {
+                    for(let dj = -1; dj <= 1; dj++) {
+                        if(di === 0 && dj === 0) continue;
+                        
+                        let ni = i + di;
+                        let nj = j + dj;
+                        
+                        if(ni >= 0 && ni < n && nj >= 0 && nj < n) {
+                            sasiadi[ni][nj]++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Funkcja rysująca obie tablice obok siebie
+function rysuj() {
+    obliczSasiadow();
+    
+    let kontener = document.getElementById('kontener');
+    kontener.innerHTML = '';
+    
+    // --- TABLICA 1: Stan komórek ---
+    let div1 = document.createElement('div');
+    div1.className = 'tablica';
+    div1.innerHTML = '<div class="tytul">Tablica h (stan)</div>';
+    
+    for(let i=0; i<n; i++){
+        for(let j=0; j<n; j++){
+            let span = document.createElement('span');
+            span.className = 'komorka ' + (h[i][j] === 1 ? 'żywa' : 'martwa');
+            span.textContent = h[i][j] === 1 ? '■' : '';
+            div1.appendChild(span);
+        }
+        div1.appendChild(document.createElement('br'));
+    }
+    
+    // --- TABLICA 2: Liczba sąsiadów ---
+    let div2 = document.createElement('div');
+    div2.className = 'tablica';
+    div2.innerHTML = '<div class="tytul">Tablica sasiadi (licznik)</div>';
+    
+    for(let i=0; i<n; i++){
+        for(let j=0; j<n; j++){
+            let span = document.createElement('span');
+            span.className = 'komorka ' + (h[i][j] === 1 ? 'żywa' : 'martwa');
+            span.textContent = sasiadi[i][j];
+            div2.appendChild(span);
+        }
+        div2.appendChild(document.createElement('br'));
+    }
+    
+    // Dodaj obie tablice do kontenera
+    kontener.appendChild(div1);
+    kontener.appendChild(div2);
+}
+
+rysuj();
+</script>
+
+</body>
+</html>

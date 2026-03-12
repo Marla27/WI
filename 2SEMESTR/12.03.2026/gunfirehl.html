@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dwie Tablice</title>
+</head>
+<body>
+<div id="plansza1"></div>
+<div id="plansza2"></div>
+
+<script>
+let n = 10;
+
+// Tablica 1: Stan komórek
+let h = new Array(n);
+for(let i=0; i<n; i++){
+    h[i] = new Array(n);
+    for(let j=0; j<n; j++){
+        h[i][j] = 0;
+    }
+}
+
+// Żywe komórki
+h[3][3] = 1;
+h[4][4] = 1;
+h[5][2] = 1;
+h[5][3] = 1;
+h[5][4] = 1;
+
+// Tablica 2: Liczba sąsiadów
+let sasiadi = new Array(n);
+for(let i=0; i<n; i++){
+    sasiadi[i] = new Array(n);
+}
+
+// Oblicz sąsiadów
+function obliczSasiadow() {
+    for(let i=0; i<n; i++){
+        for(let j=0; j<n; j++){
+            sasiadi[i][j] = 0;
+        }
+    }
+    
+    for(let i=0; i<n; i++){
+        for(let j=0; j<n; j++){
+            if(h[i][j] === 1) {
+                for(let di = -1; di <= 1; di++) {
+                    for(let dj = -1; dj <= 1; dj++) {
+                        if(di === 0 && dj === 0) continue;
+                        
+                        let ni = i + di;
+                        let nj = j + dj;
+                        
+                        if(ni >= 0 && ni < n && nj >= 0 && nj < n) {
+                            sasiadi[ni][nj]++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Rysuj tablicę 1 (stan)
+function rysujH() {
+    let txt = "<h3>Tablica h (stan)</h3><table border='1'>";
+    for(let i=0; i<n; i++){
+        txt += "<tr>";
+        for(let j=0; j<n; j++){
+            if(h[i][j] === 1) {
+                txt += "<td>■</td>";
+            } else {
+                txt += "<td>&nbsp;</td>";
+            }
+        }
+        txt += "</tr>";
+    }
+    txt += "</table>";
+    document.getElementById("plansza1").innerHTML = txt;
+}
+
+// Rysuj tablicę 2 (sąsiedzi)
+function rysujSasiadi() {
+    let txt = "<h3>Tablica sasiadi (licznik)</h3><table border='1'>";
+    for(let i=0; i<n; i++){
+        txt += "<tr>";
+        for(let j=0; j<n; j++){
+            txt += "<td>" + sasiadi[i][j] + "</td>";
+        }
+        txt += "</tr>";
+    }
+    txt += "</table>";
+    document.getElementById("plansza2").innerHTML = txt;
+}
+
+// Główna funkcja
+function rysuj() {
+    obliczSasiadow();
+    rysujH();
+    rysujSasiadi();
+}
+
+rysuj();
+</script>
+
+</body>
+</html>
