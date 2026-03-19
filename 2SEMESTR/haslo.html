@@ -15,7 +15,7 @@
        document.write(isPerfect(6));
        document.write("<br>");
        document.write(Pali("ABABA"));
-    document.write(cezar());
+    //    document.write(cezar());
 
         
        
@@ -58,21 +58,24 @@
         function cezar(){
         let Al ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         let Hl = "TKTVAGHYHUBT";//DEF   %26
-        let key = 7;
+        for(H=0;H<26;H++){
+        // let key = 7;
         let newHl= "";
         for(i=0;i<Hl.length;i++){
             for(j=0;j<Al.length;j++){
                 if(Hl.charAt(i)===Al.charAt(j)){
-                    let newindex =(j+key)%26
+                    let newindex =(j+H)%26
                      newHl += Al[newindex]
                     
                 }
             }
         }
-       return newHl
+       document.write(newHl+"<br>")
         }
+
+    }
     
-        
+        cezar();
 
     </script>
 </body>
