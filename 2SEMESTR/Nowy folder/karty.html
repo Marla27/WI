@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="kontener"></div>
+    <div id="kontener2"></div>
+    <div id="kontener3"></div>
+    <div id="kontener4"></div>
+
+    <script>
+        const arr = ["2♠", "3♠", "4♠", "5♠", "6♠", "7♠", "8♠", "9♠", "10♠", "J♠", "Q♠", "K♠", "A♠",
+          "2♥", "3♥", "4♥", "5♥", "6♥", "7♥", "8♥", "9♥", "10♥", "J♥", "Q♥", "K♥", "A♥",
+          "2♦", "3♦", "4♦", "5♦", "6♦", "7♦", "8♦", "9♦", "10♦", "J♦", "Q♦", "K♦", "A♦",
+          "2♣", "3♣", "4♣", "5♣", "6♣", "7♣", "8♣", "9♣", "10♣", "J♣", "Q♣", "K♣", "A♣"];
+
+        for (let i = 0; i < arr.length; i++) {
+           
+            const j = Math.floor(Math.random() * arr.length);
+            // let tmp = arr[i];
+            // arr[i]=arr[j];
+            // arr[j]=tmp;
+           
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        
+        const wynik = arr.slice(0, 13);
+        const wynik2 = arr.slice(13, 26);
+        const wynik3 = arr.slice(26, 39);
+        const wynik4 = arr.slice(39, 52);
+
+        document.getElementById("kontener").innerText = wynik.join(", "); 
+        document.getElementById("kontener2").innerText = wynik2.join(", ");
+         document.getElementById("kontener3").innerText = wynik3.join(", ");
+          document.getElementById("kontener4").innerText = wynik4.join(", ");
+        
+    </script>
+</body>
+</html>
