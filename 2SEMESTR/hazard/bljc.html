@@ -1,0 +1,214 @@
+<!-- <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Proste Losowanie Kart</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #27ae60;
+            color: white;
+        }
+        .karta {
+            display: inline-block;
+            margin: 10px;
+        }
+        .karta img {
+            width: 100px;
+            height: 140px;
+            border: 3px solid white;
+            border-radius: 10px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #wynik {
+            font-size: 24px;
+            margin: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Losowanie 5 Kart</h1>
+    
+    <div id="twoje-karty"></div>
+    
+    <div id="wynik"></div>
+    
+    <button onclick="losujKarty()">Losuj 5 Kart</button>
+
+<script>
+    // Lista wszystkich kart
+    const kolory = ['♠', '♥', '♦', '♣'];
+    const wartosci = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+    
+    // Funkcja do obliczania punktów z jednej karty
+    function punktZKarty(karta) {
+        if (karta.wartosc === 'J' || karta.wartosc === 'Q' || karta.wartosc === 'K') {
+            return 10;
+        } else if (karta.wartosc === 'A') {
+            return 11;
+        } else {
+            return parseInt(karta.wartosc);
+        }
+    }
+    
+    // Funkcja do obliczania sumy punktów
+    function sumaPunktow(karty) {
+        let suma = 0;
+        let asy = 0;
+        
+        for (let i = 0; i < karty.length; i++) {
+            suma += punktZKarty(karty[i]);
+            if (karty[i].wartosc === 'A') {
+                asy++;
+            }
+        }
+        
+        // Jeśli przekroczyliśmy 21 i mamy asy, zamień je na 1 punkt
+        while (suma > 21 && asy > 0) {
+            suma = suma - 10;
+            asy--;
+        }
+        
+        return suma;
+    }
+    
+    // Funkcja do losowania kart
+    function losujKarty() {
+        // Tworzymy talię kart
+        let talia = [];
+        for (let k = 0; k < kolory.length; k++) {
+            for (let w = 0; w < wartosci.length; w++) {
+                talia.push({
+                    kolor: kolory[k],
+                    wartosc: wartosci[w]
+                });
+            }
+        }
+        
+        // Mieszamy talię
+        talia.sort(function() {
+            return Math.random() - 0.5;
+        });
+        
+        // Losujemy 5 kart
+        let twojeKarty = [];
+        for (let i = 0; i < 5; i++) {
+            twojeKarty.push(talia[i]);
+        }
+        
+        // Obliczamy wynik
+        let wynik = sumaPunktow(twojeKarty);
+        
+        // Pokazujemy karty na ekranie
+        let html = '<h2>Twoje karty:</h2>';
+        for (let i = 0; i < twojeKarty.length; i++) {
+            html += '<div class="karta">';
+            html += '<img src="https://picsum.photos/100?' + (i + 1) + '" alt="karta">';
+            html += '<br>' + twojeKarty[i].wartosc + twojeKarty[i].kolor;
+            html += '</div>';
+        }
+        html += '<br><br><h2>Twój wynik: ' + wynik + '</h2>';
+        
+        // Sprawdzamy czy wygrałeś
+        if (wynik > 21) {
+            html += '<p style="color: red;">Przekroczyłeś 21! Przegrałeś!</p>';
+        } else if (wynik >= 21) {
+            html += '<p style="color: yellow;">Masz 21! Wygrałeś!</p>';
+        } else {
+            html += '<p style="color: lightgreen;">Masz ' + wynik + ' punktów. Możesz spróbować więcej!</p>';
+        }
+        
+        document.getElementById('twoje-karty').innerHTML = html;
+        document.getElementById('wynik').innerText = '';
+    }
+</script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #kontener{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        gap: 20px;
+      }
+      #kontener>img{
+        width: 100%;
+      }
+    </style>
+</head>
+<body>
+
+  <div id="kontener">
+    <!-- Tutaj możesz dodać obrazki, jeśli masz gotowe pliki kart -->
+  </div>  
+
+<script>
+let kolory = ['clubs', 'spades', 'hearts', 'diamonds'];  
+let numery = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace'];
+let player = [];
+let casino = [];
+
+function gra() {
+  // --- LOSOWANIE DLA GRACZA ---
+  for(let i = 0; i < 5; i++) {
+    let cart, color, card;
+    
+    // Pętla losuje kartę, dopóki nie znajdzie takiej, której nie ma w tablicy
+    do {
+      cart = numery[Math.floor(Math.random() * 13)]; 
+      color = kolory[Math.floor(Math.random() * 4)];
+      card = cart + "_of_" + color;
+    } while (player.includes(card)); // Sprawdzamy całą tablicę, nie tylko poprzedni element
+
+    player[i] = card; // Dopiero teraz przypisujemy pewną kartę
+  }
+
+  // --- LOSOWANIE DLA KASYNA (dodane) ---
+  for(let i = 0; i < 5; i++) {
+    let cart, color, card;
+    
+    do {
+      cart = numery[Math.floor(Math.random() * 13)]; 
+      color = kolory[Math.floor(Math.random() * 4)];
+      card = cart + "_of_" + color;
+    } while (player.includes(card) || casino.includes(card)); // Sprawdzamy obie ręce
+
+    casino[i] = card;
+  }
+
+  // Wyświetlenie wyników w konsoli
+  console.log("Gracz:", player);
+  console.log("Kasyno:", casino);
+  
+  // Opcjonalnie: wyświetlenie w HTML (jeśli chcesz)
+  const kontener = document.getElementById('kontener');
+  kontener.innerHTML = ''; // Czyścimy kontener
+  
+  // Dodajemy karty gracza jako tekst (możesz podmienić na img)
+  player.forEach(card => {
+    const div = document.createElement('div');
+    div.textContent = card;
+    div.style.border = "1px solid black";
+    div.style.padding = "10px";
+    div.style.textAlign = "center";
+    kontener.appendChild(div);
+  });
+}
+
+gra();
+</script>
+</body>
+</html>

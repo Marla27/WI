@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #kontener{
+        /* display: flex;
+        flex-wrap: wrap; */
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        gap: 20px;
+      }
+      #kontener>img{
+        width: 100%;
+        
+      }
+    </style>
+</head>
+<body>
+<!-- 
+  <div id="kontener">
+<img src="https://picsum.photos/100?1" alt="">
+<img src="https://picsum.photos/100?2" alt="">
+<img src="https://picsum.photos/100?3" alt="">
+<img src="https://picsum.photos/100?4" alt="">
+<img src="https://picsum.photos/100?5" alt="">
+<img src="https://picsum.photos/100?6" alt="">
+<img src="https://picsum.photos/100?7" alt="">
+<img src="https://picsum.photos/100?8" alt="">
+<img src="https://picsum.photos/100?9" alt="">
+<img src="https://picsum.photos/100?10" alt="">
+
+
+  </div>   -->
+
+  <img src="" id="karta1" alt="">
+  <img src="" id="karta2" alt="">
+  <img src="" id="karta3" alt="">
+  <img src="" id="karta4" alt="">
+  <img src="" id="karta5" alt="">
+  <img src="" id="karta6" alt="">
+  <img src="" id="karta7" alt="">
+  <img src="" id="karta8" alt="">
+  <img src="" id="karta9" alt="">
+  <img src="" id="karta10" alt="">
+
+
+  <h2>Gracz:</h2>
+  <div id="kontener-gracza"></div>
+
+  <h2>Kasyno:</h2>
+  <div id="kontener-kasyna"></div>
+
+
+
+<script>
+kolory = ['clubs', 'spades', 'hearts', 'diamonds'];  
+numery = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace'];
+player=[];
+casino=[];
+function gra(){
+for(let i=0;i<5;i++){
+  let card;
+  //  cart = numery[Math.floor(Math.random() * 13)]; 
+  //     color = kolory[Math.floor(Math.random() * 4)];
+  //     card = cart + "_of_" + color;
+  do {
+      cart = numery[Math.floor(Math.random() * 13)]; 
+      color = kolory[Math.floor(Math.random() * 4)];
+      card = cart + "_of_" + color;
+    } while (player.includes(card));
+
+     player[i] = card;
+
+
+
+
+  //   if(!(player[i-1]==card)){
+//  player[i]= cart+"_of_"+color
+//   }
+//  console.log(player)
+}
+
+for(let i=0;i<5;i++){
+  let card;
+  //  cart = numery[Math.floor(Math.random() * 13)]; 
+  //     color = kolory[Math.floor(Math.random() * 4)];
+  //     card = cart + "_of_" + color;
+  do {
+      cart = numery[Math.floor(Math.random() * 13)]; 
+      color = kolory[Math.floor(Math.random() * 4)];
+      card = cart + "_of_" + color;
+    } while (player.includes(card)||casino.includes(card));
+
+    // let kartazdj=document.getElementById("karta"+i)
+     casino[i] = card;
+
+
+
+
+  //   if(!(player[i-1]==card)){
+//  player[i]= cart+"_of_"+color
+//   }
+//  console.log(casino)
+}
+console.log(casino)
+ console.log(player)
+
+// --- WYŚWIETLANIE ---
+  renderKarty('kontener-gracza', player);
+  renderKarty('kontener-kasyna', casino);
+  
+  console.log("Gracz:", player);
+  console.log("Kasyno:", casino);
+
+}
+gra()
+</script>
+</body>
+</html>
